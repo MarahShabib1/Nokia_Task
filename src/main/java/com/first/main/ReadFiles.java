@@ -45,29 +45,36 @@ public class ReadFiles implements Runnable {
 	@Override
 	public void run() {
 
-		  
+	
 		try ( BufferedReader br = new BufferedReader(new FileReader(folder))){
-			
+			int[] threadArray =new int[27];
 			char[] theChars = new char[8000];
-			char[] AllChars = new char[16000];
-
+			
+	
 			int charsRead = br.read(theChars, 0, theChars.length);
-			int add=0;
+
 			while(charsRead != -1) {
-				
-				System.arraycopy(theChars, 0, AllChars, add, theChars.length);  
+
+				for(int i=0 ;i<theChars.length;i++) {
+					if(	theChars[i]>=97) 
+					   threadArray[(int)(theChars[i]-97)]++;	
+						}
 			    charsRead = br.read(theChars, 0, theChars.length);
-			    add+=theChars.length;
+			
 			}
 			
+	
 			
-	  		 for(int i=0 ;i<AllChars.length;i++) {
-	   			 
-		   			result.incrementAndGet( (int) (AllChars[i]-97));	 
+	  		 for(int i=0 ;i<threadArray.length;i++) {
+	  			result.addAndGet(i, threadArray[i]);
+		   		//	result.incrementAndGet( (int) (AllChars[i]-97));	 
 		   			 
 		   		 }
 		} catch (IOException e) {
 			
+			e.printStackTrace();
+		}catch (Exception e) {
+			 System.out.println("heeyeee");
 			e.printStackTrace();
 		}
 
