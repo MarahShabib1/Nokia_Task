@@ -33,7 +33,7 @@ public class App {
 			e.printStackTrace();
 		}
 
-		 for(int i=0;i<result.length();i++) {
+		 for(int i=0;i<result.length()-2;i++) {
 			 System.out.println((char) (i+97) +":"+result.get(i));
 		 }
 	}
