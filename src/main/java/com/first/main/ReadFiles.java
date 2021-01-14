@@ -44,32 +44,33 @@ public class ReadFiles implements Runnable {
 
 	@Override
 	public void run() {
-		
-	     
-		   StringBuilder sb = new StringBuilder();
-		   BufferedReader br;
-		try {
-			br = new BufferedReader( new FileReader(folder));
-		       String line;
-		        while ((line = br.readLine()) != null) {
-		            sb.append(line + System.lineSeparator());
-		        }
-     
-		        char [] cc=sb.toString().toCharArray();
-		        
-		   	// synchronized(result) {
-		   		 for(int i=0 ;i<cc.length;i++) {
-		   			 
-		   			result.incrementAndGet( (int) (cc[i]-97));	 
+
+		  
+		try ( BufferedReader br = new BufferedReader(new FileReader(folder))){
+			
+			char[] theChars = new char[8000];
+			char[] AllChars = new char[16000];
+
+			int charsRead = br.read(theChars, 0, theChars.length);
+			int add=0;
+			while(charsRead != -1) {
+				
+				System.arraycopy(theChars, 0, AllChars, add, theChars.length);  
+			    charsRead = br.read(theChars, 0, theChars.length);
+			    add+=theChars.length;
+			}
+			
+			
+	  		 for(int i=0 ;i<AllChars.length;i++) {
+	   			 
+		   			result.incrementAndGet( (int) (AllChars[i]-97));	 
 		   			 
 		   		 }
-		   	 //}
+		} catch (IOException e) {
+			
+			e.printStackTrace();
 		}
-		catch (IOException e) {
 
-	    		    
-	    		    
-		}	    
 	    		    
 	    		}
 	     
