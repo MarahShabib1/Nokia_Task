@@ -17,7 +17,7 @@ public class App {
 	public static void main(String[] args) {
 		
 		 
-		 AtomicIntegerArray result = new AtomicIntegerArray(28);
+		 AtomicIntegerArray result = new AtomicIntegerArray(27);
 		 
 		 File folder = new File("C:\\Users\\MarahSh\\Desktop\\test");
 		 ExecutorService executer =Executors.newFixedThreadPool(5);
@@ -33,7 +33,7 @@ public class App {
 			e.printStackTrace();
 		}
 
-		 for(int i=0;i<result.length()-2;i++) {
+		 for(int i=0;i<result.length()-1;i++) {
 			 System.out.println((char) (i+97) +":"+result.get(i));
 		 }
 	}
