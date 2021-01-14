@@ -54,8 +54,7 @@ public class ReadFiles implements Runnable {
 		        while ((line = br.readLine()) != null) {
 		            sb.append(line + System.lineSeparator());
 		        }
-		 
-		        // sb.toString();
+     
 		        char [] cc=sb.toString().toCharArray();
 		        
 		   	// synchronized(result) {

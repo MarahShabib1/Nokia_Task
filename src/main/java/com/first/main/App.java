@@ -15,7 +15,7 @@ public class App {
 
 
 	public static void main(String[] args) {
-		 //Hashtable<Character,Integer> result=new Hashtable<>();
+		
 		 
 		 AtomicIntegerArray result = new AtomicIntegerArray(28);
 		 
@@ -24,7 +24,7 @@ public class App {
 	      ReadFiles thread=new ReadFiles(folder,result,executer);
 		 thread.ReadAllFiles(folder, result, executer);
 		 
-		// ReadAllFiles(folder ,result,executer );
+	
 		 executer.shutdown();
 		 try {
 			executer.awaitTermination(1, TimeUnit.DAYS);
@@ -32,18 +32,7 @@ public class App {
 		
 			e.printStackTrace();
 		}
-		 int count;
-		 System.out.println("CountAll............");
-		/* for(int i=97; i<=122;i++) {
-			 if(result.get((char)i)==null) {
-				 count=0;
-			 }else {
-				 count= result.get((char)i);
-			 }
-			  System.out.println((char)i+ " " + count);  
-		 }*/
-	
-	
+
 		 for(int i=0;i<result.length();i++) {
 			 System.out.println((char) (i+97) +":"+result.get(i));
 		 }
