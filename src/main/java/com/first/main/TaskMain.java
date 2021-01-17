@@ -20,11 +20,11 @@ public class TaskMain {
 	/*	 if(args.length==0|| !Files.exists(Paths.get(args[0])) ) {
 			 throw new RuntimeException("Please Enter a correct path!");
 		 }*/
-		 AtomicIntegerArray charCount = new AtomicIntegerArray(27);
-		 File folder = new File("C:\\Users\\MarahSh\\Desktop\\TestingDirectory"); //Should be args[0];
+		 AtomicIntegerArray charCount = new AtomicIntegerArray(24);
+		 File file = new File("C:\\Users\\MarahSh\\Desktop\\TestingDirectory"); //Should be args[0];
 	     ExecutorService executer =Executors.newFixedThreadPool(5);
-	     ReadFiles ReadThreads=new ReadFiles(folder,charCount,executer);
-	     ReadThreads.ReadAllFiles(folder, charCount, executer);
+	     ReadFiles ReadThreads=new ReadFiles(file,charCount,executer);
+	     ReadThreads.ReadAllFiles(file, charCount, executer);
 		 executer.shutdown();
 		 executer.awaitTermination(1, TimeUnit.HOURS);//hours 
 		 for(int i=0;i<charCount.length()-1;i++) {
@@ -32,3 +32,4 @@ public class TaskMain {
 		 }
 	}
 }
+

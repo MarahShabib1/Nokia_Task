@@ -13,12 +13,12 @@ import java.util.concurrent.atomic.AtomicIntegerArray;
 public class ReadFiles {
 	
 	
-	File folder;
-    AtomicIntegerArray charCount;
-	ExecutorService executer;
+	 File file;
+     AtomicIntegerArray charCount;
+ 	 ExecutorService executer;
 	List<String> list=new ArrayList<String >();
 	public ReadFiles(File folder , AtomicIntegerArray charCount ,ExecutorService executer) {
-		this.folder=folder;
+		this.file=folder;
 		this.charCount=charCount;
 		this.executer=executer;
 		

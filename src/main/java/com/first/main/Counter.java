@@ -10,11 +10,10 @@ import java.util.concurrent.atomic.AtomicIntegerArray;
 public class Counter implements Runnable {
 	
 	
-	File folder;
-	AtomicIntegerArray charCount;
-	ExecutorService executer;
+	private File file;
+	private AtomicIntegerArray charCount;
 	public Counter(File folder , AtomicIntegerArray charCount ) {
-		this.folder=folder;
+		this.file=folder;
 		this.charCount=charCount;
 	}
 	
@@ -22,8 +21,8 @@ public class Counter implements Runnable {
 	@Override
 	public void run() {
 
-		try ( BufferedReader br = new BufferedReader(new FileReader(folder))){
-			int[] threadArray =new int[27];
+		try ( BufferedReader br = new BufferedReader(new FileReader(file))){
+			int[] threadArray =new int[24];
 			char[] theChars = new char[8192];
 			int charsRead = br.read(theChars, 0, theChars.length);
 			while(charsRead != -1) {
@@ -33,7 +32,8 @@ public class Counter implements Runnable {
 						}
 			    charsRead = br.read(theChars, 0, theChars.length);
 			}
-	  		 for(int i=0 ;i<threadArray.length;i++) {
+	  		 for(int i=0 ;i<threadArray.length;i++) { 
+	  			if(threadArray[i]>0)
 	  			charCount.addAndGet(i, threadArray[i]);	 
 		   		 }
 	  		 
