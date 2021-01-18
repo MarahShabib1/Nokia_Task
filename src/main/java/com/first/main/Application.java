@@ -20,8 +20,7 @@ import java.util.concurrent.atomic.AtomicIntegerArray;
 public class Application {
 
 	public static void main(String[] args) throws Exception {
-	  //  System.out.println("eee"+args);
-		
+	 
 		  if(args.length==0|| !Files.exists(Paths.get(args[0])) ) {
 			  throw new RuntimeException("Please Enter a correct path!"); 
 			  }
