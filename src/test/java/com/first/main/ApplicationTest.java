@@ -11,7 +11,7 @@ import org.junit.Test;
 
 public class ApplicationTest {
 	  private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-	    private ClassLoader loader = Application.class.getClassLoader();
+	    private ClassLoader loader = getClass().getClassLoader();
 
 	    
 	    
@@ -25,8 +25,7 @@ public class ApplicationTest {
 	     */
 		@Test
 	    public void testLowerCaseCounter() throws Exception {
-	        String[] args = {loader.getResource("TestingDirectory").getPath()};
-	        Application.main(args);
+		  String[] arguments = {loader.getResource("TestingDirectory").getPath()};
 	        String TestString ="okia";
 	        StringBuilder expectedOutput = new StringBuilder();
 	   	 for(int i=97;i<=122;i++) {
@@ -41,10 +40,11 @@ public class ApplicationTest {
 	        Assert.assertEquals(expectedOutput.toString(), outContent.toString());
 	   }
 		
-		@Test
+		
+		 @Test(expected = RuntimeException.class)
 	    public void testInvalidPath() throws Exception {
 	        String[] args =new String[2];
-	        args[0]="M:\\Users\\MarahSh\\Desktop\\TestingDirectory"; //invalidpath
+	        args[0]="C:\\Users\\MarahSh\\Desktop\\TestingDirectory22"; //invalidpath
 	        Application.main(args);
 	    }
 		

@@ -20,20 +20,20 @@ import java.util.concurrent.atomic.AtomicIntegerArray;
 public class Application {
 
 	public static void main(String[] args) throws Exception {
-
+	  //  System.out.println("eee"+args);
 		
 		  if(args.length==0|| !Files.exists(Paths.get(args[0])) ) {
 			  throw new RuntimeException("Please Enter a correct path!"); 
 			  }
 		 
-		AtomicIntegerArray charCount = new AtomicIntegerArray(24);
+		AtomicIntegerArray charCount = new AtomicIntegerArray(26);
 		File file = new File(args[0]); 
-		ExecutorService executer = Executors.newFixedThreadPool(4); // thread # equal to the # of cpu cores
+		ExecutorService executer = Executors.newFixedThreadPool(8); // thread # equal to the # of cpu cores
 		GetFiles getFiles = new GetFiles();
 		getFiles.Read_Files(file, charCount, executer);
 		executer.shutdown();
 		executer.awaitTermination(1, TimeUnit.HOURS);
-		for (int i = 0; i < charCount.length() - 1; i++) {
+		for (int i = 0; i < charCount.length() ; i++) {
 			System.out.print((char) (i + 97) + ":" + charCount.get(i) + "\n");
 		}
 	}
