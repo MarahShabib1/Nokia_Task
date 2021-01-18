@@ -46,7 +46,7 @@ public class ApplicationTest {
 	@Test(expected = RuntimeException.class)
 	public void testInvalidPath() throws Exception {
 		
-		URI uri = ClassLoader.getSystemResource("NotValidPath").toURI();
+		URI uri = ClassLoader.getSystemResource("invalidPath").toURI();
 		String[] args = { Paths.get(uri).toString() };
 		Application.main(args);
 	}
