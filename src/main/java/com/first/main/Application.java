@@ -21,6 +21,7 @@ public class Application {
 
 	public static void main(String[] args) throws Exception {
 	 
+		
 		  if(args.length==0|| !Files.exists(Paths.get(args[0])) ) {
 			  throw new RuntimeException("Please Enter a correct path!"); 
 			  }

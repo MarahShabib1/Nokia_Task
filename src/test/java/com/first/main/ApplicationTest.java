@@ -24,6 +24,8 @@ public class ApplicationTest {
 	 */
 	@Test
 	public void testLowerCaseCounter() throws Exception {
+		
+		
 		URI uri = ClassLoader.getSystemResource("TestingDirectory").toURI();
 		String[] args = { Paths.get(uri).toString() };
 		Application.main(args);
@@ -43,8 +45,9 @@ public class ApplicationTest {
 
 	@Test(expected = RuntimeException.class)
 	public void testInvalidPath() throws Exception {
-		String[] args = new String[2];
-		args[0] = "C:\\Users\\MarahSh\\Desktop\\TestingDirectory22"; // invalidpath
+		
+		URI uri = ClassLoader.getSystemResource("NotValidPath").toURI();
+		String[] args = { Paths.get(uri).toString() };
 		Application.main(args);
 	}
 
