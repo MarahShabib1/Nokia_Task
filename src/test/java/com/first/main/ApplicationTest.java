@@ -9,9 +9,9 @@ import org.junit.Test;
 
 
 
-public class TaskMainTest {
+public class ApplicationTest {
 	  private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-	    private ClassLoader loader = TaskMain.class.getClassLoader();
+	    private ClassLoader loader = Application.class.getClassLoader();
 
 	    
 	    
@@ -26,7 +26,7 @@ public class TaskMainTest {
 		@Test
 	    public void testLowerCaseCounter() throws Exception {
 	        String[] args = {loader.getResource("TestingDirectory").getPath()};
-	        TaskMain.main(args);
+	        Application.main(args);
 	        String TestString ="okia";
 	        StringBuilder expectedOutput = new StringBuilder();
 	   	 for(int i=97;i<=122;i++) {
@@ -45,7 +45,7 @@ public class TaskMainTest {
 	    public void testInvalidPath() throws Exception {
 	        String[] args =new String[2];
 	        args[0]="M:\\Users\\MarahSh\\Desktop\\TestingDirectory"; //invalidpath
-	        TaskMain.main(args);
+	        Application.main(args);
 	    }
 		
 		
