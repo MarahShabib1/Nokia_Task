@@ -30,7 +30,7 @@ public class Application {
 		File file = new File(args[0]); 
 		ExecutorService executer = Executors.newFixedThreadPool(4); // thread # equal to the # of cpu cores
 		GetFiles getFiles = new GetFiles();
-		getFiles.ReadAllFiles(file, charCount, executer);
+		getFiles.Read_Files(file, charCount, executer);
 		executer.shutdown();
 		executer.awaitTermination(1, TimeUnit.HOURS);
 		for (int i = 0; i < charCount.length() - 1; i++) {

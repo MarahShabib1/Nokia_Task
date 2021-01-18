@@ -42,12 +42,11 @@ public class LowCaseCounter implements Runnable {
 					charCount.addAndGet(i, threadArray[i]);
 			}
 
-		} catch (IOException e) {
+		} catch (IOException e ) {
 
 			e.printStackTrace();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		} 
+		    
 
 	}
 

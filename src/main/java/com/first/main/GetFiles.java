@@ -14,10 +14,7 @@ import java.util.concurrent.atomic.AtomicIntegerArray;
  */
 public class GetFiles {
 
-	public GetFiles() {
-
-	}
-
+	
 	/**
 	 * 
 	 * @param file      directory or sub directory
@@ -25,7 +22,7 @@ public class GetFiles {
 	 * @param executer  to provide a pool of threads.
 	 */
 
-	public void ReadAllFiles(File file, AtomicIntegerArray charCount, ExecutorService executer) {
+	public void Read_Files(File file, AtomicIntegerArray charCount, ExecutorService executer) {
 
 		for (final File fileEntry : file.listFiles()) {
 
@@ -33,7 +30,7 @@ public class GetFiles {
 				executer.submit(new LowCaseCounter(fileEntry, charCount));
 
 			} else {
-				ReadAllFiles(fileEntry, charCount, executer);
+				Read_Files(fileEntry, charCount, executer);
 
 			}
 		}
