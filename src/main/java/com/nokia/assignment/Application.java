@@ -10,8 +10,8 @@ import java.util.concurrent.atomic.AtomicIntegerArray;
 
 /**
  * Application is the main class takes the file path from the command line
- * arguments and it call the ReadAllFiles method.
- * After that it will print the counts of the low case letters in the console .
+ * arguments and it call the ReadAllFiles method. After that it will print the
+ * counts of the low case letters in the console .
  * 
  * @author MarahSh
  *
@@ -20,20 +20,20 @@ import java.util.concurrent.atomic.AtomicIntegerArray;
 public class Application {
 
 	public static void main(String[] args) throws Exception {
-	 
-		
-		  if(args.length==0|| !Files.exists(Paths.get(args[0])) ) {
-			  throw new RuntimeException("Please Enter a correct path!"); 
-			  }
-		 
+
+		if (args.length == 0 || !Files.exists(Paths.get(args[0]))) {
+			throw new RuntimeException("Please Enter a correct path!");
+		}
+
 		AtomicIntegerArray charCount = new AtomicIntegerArray(26);
-		File file = new File(args[0]); 
-		ExecutorService executer = Executors.newFixedThreadPool(4); // thread # equal to the # of cpu cores
+		File file = new File(args[0]);
+		int numOfCores = Runtime.getRuntime().availableProcessors();
+		ExecutorService executer = Executors.newFixedThreadPool(numOfCores); // thread # equal to the # of cpu cores
 		GetFiles getFiles = new GetFiles();
-		getFiles.Read_Files(file, charCount, executer);
+		getFiles.ReadFiles(file, charCount, executer);
 		executer.shutdown();
 		executer.awaitTermination(1, TimeUnit.HOURS);
-		for (int i = 0; i < charCount.length() ; i++) {
+		for (int i = 0; i < charCount.length(); i++) {
 			System.out.print((char) (i + 97) + "\t" + charCount.get(i) + "\n");
 		}
 	}

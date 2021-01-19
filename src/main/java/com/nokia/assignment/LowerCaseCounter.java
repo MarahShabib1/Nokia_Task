@@ -13,12 +13,12 @@ import java.util.concurrent.atomic.AtomicIntegerArray;
  *
  */
 
-public class LowCaseCounter implements Runnable {
+public class LowerCaseCounter implements Runnable {
 
 	private File file;
 	private AtomicIntegerArray charCount;
 
-	public LowCaseCounter(File file, AtomicIntegerArray charCount) {
+	public LowerCaseCounter(File file, AtomicIntegerArray charCount) {
 		this.file = file;
 		this.charCount = charCount;
 	}
@@ -27,7 +27,7 @@ public class LowCaseCounter implements Runnable {
 	public void run() {
 
 		try (BufferedReader br = new BufferedReader(new FileReader(file))) {
-			int[] threadArray = new int[24]; // to save the low case chars count for the whole file .
+			int[] threadArray = new int[26]; // to save the low case chars count for the whole file .
 			char[] charsChunk = new char[8192]; // to read chunk of characters from the file . 
 			int charsRead = br.read(charsChunk, 0, charsChunk.length);
 			while (charsRead != -1) {
