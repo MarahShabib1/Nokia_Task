@@ -1,4 +1,4 @@
-package com.first.main;
+package com.nokia.assignment;
 
 import java.io.BufferedReader;
 

@@ -1,4 +1,4 @@
-package com.first.main;
+package com.nokia.assignment;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -9,6 +9,8 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
+
 
 public class ApplicationTest {
 	private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
@@ -34,9 +36,9 @@ public class ApplicationTest {
 		for (int i = 97; i <= 122; i++) {
 
 			if (TestString.indexOf(i) != -1) {
-				expectedOutput.append((char) (i) + ":" + "75" + "\n");
+				expectedOutput.append((char) (i) +"\t" + "75" + "\n");
 			} else {
-				expectedOutput.append((char) (i) + ":" + "0" + "\n");
+				expectedOutput.append((char) (i) + "\t" + "0" + "\n");
 			}
 		}
 

@@ -1,4 +1,4 @@
-package com.first.main;
+package com.nokia.assignment;
 
 import java.io.File;
 import java.nio.file.Files;
@@ -28,13 +28,13 @@ public class Application {
 		 
 		AtomicIntegerArray charCount = new AtomicIntegerArray(26);
 		File file = new File(args[0]); 
-		ExecutorService executer = Executors.newFixedThreadPool(8); // thread # equal to the # of cpu cores
+		ExecutorService executer = Executors.newFixedThreadPool(4); // thread # equal to the # of cpu cores
 		GetFiles getFiles = new GetFiles();
 		getFiles.Read_Files(file, charCount, executer);
 		executer.shutdown();
 		executer.awaitTermination(1, TimeUnit.HOURS);
 		for (int i = 0; i < charCount.length() ; i++) {
-			System.out.print((char) (i + 97) + ":" + charCount.get(i) + "\n");
+			System.out.print((char) (i + 97) + "\t" + charCount.get(i) + "\n");
 		}
 	}
 }
