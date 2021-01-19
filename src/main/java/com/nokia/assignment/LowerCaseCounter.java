@@ -8,7 +8,9 @@ import java.io.IOException;
 import java.util.concurrent.atomic.AtomicIntegerArray;
 
 /**
- * LowCaseCounter is a Runnable class thats responsible to count the occurrences of lower-case  characters in the file .
+ * LowCaseCounter is a Runnable class that is responsible to count the
+ * occurrences of lower-case characters in the file.
+ * 
  * @author MarahSh
  *
  */
@@ -28,7 +30,7 @@ public class LowerCaseCounter implements Runnable {
 
 		try (BufferedReader br = new BufferedReader(new FileReader(file))) {
 			int[] threadArray = new int[26]; // to save the low case chars count for the whole file .
-			char[] charsChunk = new char[8192]; // to read chunk of characters from the file . 
+			char[] charsChunk = new char[8192]; // to read chunk of characters from the file .
 			int charsRead = br.read(charsChunk, 0, charsChunk.length);
 			while (charsRead != -1) {
 				for (int i = 0; i < charsChunk.length; i++) {
@@ -42,11 +44,10 @@ public class LowerCaseCounter implements Runnable {
 					charCount.addAndGet(i, threadArray[i]);
 			}
 
-		} catch (IOException e ) {
+		} catch (IOException e) {
 
 			e.printStackTrace();
-		} 
-		    
+		}
 
 	}
 

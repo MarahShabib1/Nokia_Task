@@ -10,9 +10,15 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * MainCounterTest class to verify that the code is counting the occurrences of
+ * the lower case correctly .
+ * 
+ * @author MarahSh
+ *
+ */
 
-
-public class ApplicationTest {
+public class MainCounterTest {
 	private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 
 	@Before
@@ -21,22 +27,23 @@ public class ApplicationTest {
 	}
 
 	/**
+	 * This test verifies whether the count of the lower case letter in the
+	 * TestingDirectory(inside resources) is equal to the expectedOutput.
 	 * 
 	 * @throws Exception
 	 */
 	@Test
 	public void testLowerCaseCounter() throws Exception {
-		
-		
+
 		URI uri = ClassLoader.getSystemResource("TestingDirectory").toURI();
 		String[] args = { Paths.get(uri).toString() };
-		Application.main(args);
+		MainCounter.main(args);
 		String TestString = "okia";
 		StringBuilder expectedOutput = new StringBuilder();
 		for (int i = 97; i <= 122; i++) {
 
 			if (TestString.indexOf(i) != -1) {
-				expectedOutput.append((char) (i) +"\t" + "75" + "\n");
+				expectedOutput.append((char) (i) + "\t" + "75" + "\n");
 			} else {
 				expectedOutput.append((char) (i) + "\t" + "0" + "\n");
 			}
@@ -45,12 +52,19 @@ public class ApplicationTest {
 		Assert.assertEquals(expectedOutput.toString(), outContent.toString());
 	}
 
+	/**
+	 * 
+	 * This test verifies if the user enter a invalid path an Exception must be
+	 * thrown.
+	 * 
+	 * @throws Exception
+	 */
 	@Test(expected = RuntimeException.class)
 	public void testInvalidPath() throws Exception {
-		
+
 		URI uri = ClassLoader.getSystemResource("invalidPath").toURI();
 		String[] args = { Paths.get(uri).toString() };
-		Application.main(args);
+		MainCounter.main(args);
 	}
 
 	@After

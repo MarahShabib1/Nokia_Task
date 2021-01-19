@@ -5,23 +5,25 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.atomic.AtomicIntegerArray;
 
 /**
- * GetFiles class is responsible to make a loop on all files in a directory
- * including sub directories through ReadAllFiles method . and then assign a
- * task (which is LowCaseCounter in our case) to the ExecutorService .
+ * FilesReader class is responsible to loop through all files in a directory
+ * including sub directories through readFiles method.And then assign a task
+ * (which is LowCaseCounter in our case) to the ExecutorService .
  * 
  * @author MarahSh
  *
  */
-public class GetFiles {
+public class FilesReader {
 
 	/**
+	 * This method is responsible to loop through all files and assign a task (which
+	 * is LowCaseCounter in our case) to the ExecutorService.
 	 * 
 	 * @param file      directory or sub directory
 	 * @param charCount Array that contains the final count for each chars
 	 * @param executer  to provide a pool of threads.
 	 */
 
-	public void ReadFiles(File file, AtomicIntegerArray charCount, ExecutorService executer) {
+	public void readFiles(File file, AtomicIntegerArray charCount, ExecutorService executer) {
 
 		for (final File fileEntry : file.listFiles()) {
 
@@ -29,7 +31,7 @@ public class GetFiles {
 				executer.submit(new LowerCaseCounter(fileEntry, charCount));
 
 			} else {
-				ReadFiles(fileEntry, charCount, executer);
+				readFiles(fileEntry, charCount, executer);
 
 			}
 		}
